@@ -84,10 +84,13 @@ portfolio/
 
 ## 🌐 Deployment
 
-Deploy to Vercel:
-\`\`\`bash
-npm run build
-\`\`\`
+Deploy to GitHub Pages:
+
+1. Push your code to the `main` branch.
+2. In the repository settings, set GitHub Pages source to `GitHub Actions`.
+3. Every push to `main` will run the workflow and publish the latest static export.
+
+The app is configured for static export, so it can be hosted on GitHub Pages without a separate server.
 
 ## 📄 License
 
