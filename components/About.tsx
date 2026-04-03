@@ -22,17 +22,17 @@ const About = () => {
     {
       degree: 'Intermediate (12th)',
       field: 'Mathematics, Physics, Chemistry',
-      institution: 'Sri Chaitanya Junior College',
+      institution: 'KBN Shine College',
       duration: '2020 - 2022',
-      grade: 'Score: 972/1000',
+      grade: 'Score: 633/1000',
       icon: '📚',
     },
     {
       degree: 'SSC',
       field: '10th Grade',
-      institution: 'Sri Chaitanya Techno School',
+      institution: 'Harpers High School',
       duration: '2020',
-      grade: 'Score: 998/1000',
+      grade: 'Score: 997/1000',
       icon: '🎓',
     },
   ];
