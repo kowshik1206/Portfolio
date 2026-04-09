@@ -32,7 +32,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4">
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-0">
       <div className="container mx-auto">
         <motion.div
           variants={containerVariants}
@@ -41,29 +41,32 @@ const Hero = () => {
           className="grid md:grid-cols-2 gap-12 items-center"
         >
           {/* Left Content */}
-          <div className="space-y-6 text-center md:text-left">
+          <div className="space-y-6 text-left max-w-xl mx-auto md:mx-0">
             <motion.div variants={itemVariants}>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-3 leading-tight">
+              <p className="text-primary-400 text-sm md:text-base font-semibold tracking-[0.18em] uppercase mb-3 [font-family:var(--font-inter)]">
+                Hello, I am
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 leading-[1.02] tracking-[-0.015em] [font-family:var(--font-poppins)]">
                 Kowshik
                 <br />
-                <span className="bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                <span className="block mt-1 bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Boggavarapu
                 </span>
               </h1>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-2">
-              <h2 className="text-xl md:text-2xl text-white font-bold">
+              <h2 className="text-lg sm:text-xl md:text-2xl text-white font-semibold leading-snug [font-family:var(--font-poppins)]">
                 Full-Stack Developer & Blockchain Enthusiast
               </h2>
-              <p className="text-sm md:text-base text-gray-400 font-medium">
+              <p className="text-sm md:text-[15px] text-gray-400 font-medium leading-relaxed [font-family:var(--font-inter)]">
                 B.Tech IT Student | Building Modern Web Applications
               </p>
             </motion.div>
 
             <motion.p
               variants={itemVariants}
-              className="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl"
+              className="text-gray-400 text-base md:text-[17px] leading-8 max-w-2xl [font-family:var(--font-inter)]"
             >
               Motivated IT student with hands-on experience in frontend and full-stack web development. Skilled in HTML, CSS, JavaScript, React.js, Next.js, TypeScript, AngularJS, PHP, and MySQL. Beginner-level exposure to blockchain technologies including ICP, Aptos Move, and Algorand. Passionate about building responsive, scalable, and user-friendly web solutions.
             </motion.p>
@@ -128,10 +131,10 @@ const Hero = () => {
             variants={itemVariants}
             className="relative flex items-center justify-center"
           >
-            <div className="relative w-full max-w-lg h-[550px] flex items-center justify-center">
+            <div className="relative w-full max-w-lg h-[420px] sm:h-[500px] md:h-[550px] flex items-center justify-center">
               {/* White Circle Background with Neon Glow - Static */}
               <div
-                className="absolute w-[360px] h-[360px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-white to-gray-50 rounded-full shadow-2xl flex items-center justify-center overflow-hidden"
+                className="absolute z-10 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-white to-gray-50 rounded-full shadow-2xl flex items-center justify-center overflow-hidden"
                 style={{
                   boxShadow: '0 0 50px rgba(139, 92, 246, 0.35), 0 0 90px rgba(59, 130, 246, 0.25)',
                 }}
@@ -140,9 +143,9 @@ const Hero = () => {
                   <Image
                     src="/developer-avatar.png"
                     alt="Kowshik - Full Stack Developer"
-                    width={400}
-                    height={400}
-                    className="object-cover scale-110"
+                    fill
+                    sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 400px"
+                    className="w-full h-full object-cover scale-110"
                     priority
                   />
                 </div>
