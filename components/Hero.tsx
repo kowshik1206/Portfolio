@@ -55,10 +55,13 @@ const Hero = () => {
               </h1>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-2">
+            <motion.div variants={itemVariants} className="space-y-3">
               <h2 className="text-lg sm:text-xl md:text-2xl text-white font-semibold leading-snug [font-family:var(--font-poppins)]">
                 Full-Stack Developer & Blockchain Enthusiast
               </h2>
+              <p className="text-sm md:text-[15px] text-primary-300 font-semibold leading-relaxed [font-family:var(--font-inter)] bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">
+                🎨 Crafting modern and scalable web experiences
+              </p>
               <p className="text-sm md:text-[15px] text-gray-400 font-medium leading-relaxed [font-family:var(--font-inter)]">
                 B.Tech IT Student | Building Modern Web Applications
               </p>
@@ -71,32 +74,33 @@ const Hero = () => {
               Motivated IT student with hands-on experience in frontend and full-stack web development. Skilled in HTML, CSS, JavaScript, React.js, Next.js, TypeScript, AngularJS, PHP, and MySQL. Beginner-level exposure to blockchain technologies including ICP, Aptos Move, and Algorand. Passionate about building responsive, scalable, and user-friendly web solutions.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(14, 165, 233, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-primary-500/30 text-sm md:text-base"
+                className="px-8 py-3.5 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl text-sm md:text-base relative overflow-hidden group"
               >
-                View My Work
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-700"></span>
+                <span className="relative">View My Work</span>
               </motion.a>
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, borderColor: "rgba(14, 165, 233, 1)", boxShadow: "0 0 20px rgba(14, 165, 233, 0.3), inset 0 0 20px rgba(14, 165, 233, 0.1)" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 bg-dark-800/80 backdrop-blur-sm border-2 border-dark-700 hover:border-primary-500/50 text-gray-300 hover:text-white rounded-lg font-semibold transition-all duration-300 text-sm md:text-base"
+                className="px-8 py-3.5 bg-dark-800/50 backdrop-blur-md border-2 border-dark-600 hover:border-primary-500 text-gray-300 hover:text-white rounded-xl font-semibold transition-all duration-300 text-sm md:text-base"
               >
                 Get In Touch
               </motion.a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex gap-4 justify-center md:justify-start pt-2">
+            <motion.div variants={itemVariants} className="flex gap-4 justify-center md:justify-start pt-4">
               <motion.a
                 href="https://github.com/kowshikboggavarapu"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.15, y: -2 }}
-                className="w-11 h-11 flex items-center justify-center rounded-lg bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-400 hover:text-white hover:border-primary-500/50 hover:bg-dark-700 transition-all duration-300"
+                whileHover={{ scale: 1.2, y: -4, boxShadow: "0 0 20px rgba(139, 92, 246, 0.6)" }}
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-dark-700 to-dark-800 backdrop-blur-sm border border-dark-600 text-gray-300 hover:text-white transition-all duration-300 shadow-lg"
               >
                 <FaGithub className="text-lg" />
               </motion.a>
@@ -104,22 +108,22 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/kowshik-boggavarapu"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.15, y: -2 }}
-                className="w-11 h-11 flex items-center justify-center rounded-lg bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-400 hover:text-white hover:border-primary-500/50 hover:bg-dark-700 transition-all duration-300"
+                whileHover={{ scale: 1.2, y: -4, boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)" }}
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-dark-700 to-dark-800 backdrop-blur-sm border border-dark-600 text-gray-300 hover:text-white transition-all duration-300 shadow-lg"
               >
                 <FaLinkedin className="text-lg" />
               </motion.a>
               <motion.a
                 href="mailto:kowshikboggavarapu@gmail.com"
-                whileHover={{ scale: 1.15, y: -2 }}
-                className="w-11 h-11 flex items-center justify-center rounded-lg bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-400 hover:text-white hover:border-primary-500/50 hover:bg-dark-700 transition-all duration-300"
+                whileHover={{ scale: 1.2, y: -4, boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)" }}
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-dark-700 to-dark-800 backdrop-blur-sm border border-dark-600 text-gray-300 hover:text-white transition-all duration-300 shadow-lg"
               >
                 <FaEnvelope className="text-lg" />
               </motion.a>
               <motion.a
                 href="tel:+919381299718"
-                whileHover={{ scale: 1.15, y: -2 }}
-                className="w-11 h-11 flex items-center justify-center rounded-lg bg-dark-800/80 backdrop-blur-sm border border-dark-700 text-gray-400 hover:text-white hover:border-primary-500/50 hover:bg-dark-700 transition-all duration-300"
+                whileHover={{ scale: 1.2, y: -4, boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)" }}
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-dark-700 to-dark-800 backdrop-blur-sm border border-dark-600 text-gray-300 hover:text-white transition-all duration-300 shadow-lg"
               >
                 <FaPhone className="text-lg" />
               </motion.a>

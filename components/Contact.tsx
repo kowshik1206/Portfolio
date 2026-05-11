@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCheck } from 'react-icons/fa';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -17,12 +17,26 @@ const Contact = () => {
     message: '',
   });
 
+  const [copySuccess, setCopySuccess] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('kowshikboggavarapu@gmail.com');
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
+    setFormSuccess(true);
     setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setFormSuccess(false), 3000);
   };
 
   const contactInfo = [
@@ -32,6 +46,7 @@ const Contact = () => {
       value: 'kowshikboggavarapu@gmail.com',
       href: 'mailto:kowshikboggavarapu@gmail.com',
       color: 'from-blue-500 to-cyan-500',
+      action: 'copy',
     },
     {
       icon: FaPhone,
@@ -57,18 +72,22 @@ const Contact = () => {
         <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto relative z-10" ref={ref}>
+      <div className="container mx-auto relative z-10 max-w-7xl" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
+            <FaEnvelope className="text-blue-400" />
+            <span className="text-blue-400 text-sm font-semibold">Get In Touch</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Get In <span className="gradient-text">Touch</span>
+            Let's <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Connect</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach out!
+            Have a project in mind or want to collaborate? I'd love to hear from you!
           </p>
         </motion.div>
 
@@ -78,56 +97,86 @@ const Contact = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-3xl p-8"
+            whileHover={{ y: -5 }}
+            className="group relative"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl text-white focus:outline-none focus:border-primary-500 transition-colors"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-gray-300 mb-2 font-medium">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl text-white focus:outline-none focus:border-primary-500 transition-colors"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-gray-300 mb-2 font-medium">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-xl text-white focus:outline-none focus:border-primary-500 transition-colors resize-none"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/50"
-              >
-                Send Message
-              </button>
-            </form>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 group-hover:border-blue-500/30 rounded-3xl p-8 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
+              <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 bg-dark-700/50 border border-dark-600 hover:border-blue-500/30 focus:border-blue-500/50 rounded-xl text-white focus:outline-none transition-all duration-300"
+                    required
+                    placeholder="Your name"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <label htmlFor="email" className="block text-gray-300 mb-2 font-medium">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 bg-dark-700/50 border border-dark-600 hover:border-blue-500/30 focus:border-blue-500/50 rounded-xl text-white focus:outline-none transition-all duration-300"
+                    required
+                    placeholder="your@email.com"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <label htmlFor="message" className="block text-gray-300 mb-2 font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 bg-dark-700/50 border border-dark-600 hover:border-blue-500/30 focus:border-blue-500/50 rounded-xl text-white focus:outline-none transition-all duration-300 resize-none"
+                    required
+                    placeholder="Your message here..."
+                  />
+                </motion.div>
+                <motion.button
+                  type="submit"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(14, 165, 233, 0.6)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                >
+                  {formSuccess ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <FaCheck /> Message Sent!
+                    </span>
+                  ) : (
+                    'Send Message'
+                  )}
+                </motion.button>
+              </form>
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -139,28 +188,41 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {contactInfo.map((info, index) => (
-                  <motion.a
+                  <motion.div
                     key={info.title}
-                    href={info.href}
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-4 bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-2xl p-6 hover:border-primary-500/50 transition-all duration-300 group"
+                    whileHover={{ scale: 1.02, y: -3 }}
+                    className="group relative"
                   >
-                    <div
-                      className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-15 rounded-2xl blur-lg transition-opacity duration-300`}></div>
+                    <div className={`relative flex items-center gap-4 bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 group-hover:border-dark-600 rounded-2xl p-6 transition-all duration-300 shadow-lg group-hover:shadow-xl cursor-pointer`}
+                      onClick={info.action === 'copy' ? handleCopyEmail : undefined}
                     >
-                      <info.icon className="text-white text-xl" />
+                      <div
+                        className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}
+                      >
+                        <info.icon className="text-white text-xl" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-400 text-sm">{info.title}</p>
+                        <p className="text-white font-semibold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                          {info.value}
+                        </p>
+                      </div>
+                      {info.action === 'copy' && (
+                        <motion.div
+                          animate={{ scale: copySuccess ? [1, 1.2, 1] : 1 }}
+                          className="text-gray-400 group-hover:text-primary-400 transition-colors"
+                        >
+                          {copySuccess ? <FaCheck className="text-green-400" /> : null}
+                        </motion.div>
+                      )}
                     </div>
-                    <div>
-                      <p className="text-gray-400 text-sm">{info.title}</p>
-                      <p className="text-white font-semibold group-hover:text-primary-400 transition-colors">
-                        {info.value}
-                      </p>
-                    </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -170,26 +232,32 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-2xl p-8"
+              whileHover={{ y: -5 }}
+              className="group relative"
             >
-              <h4 className="text-xl font-bold text-white mb-4">Connect With Me</h4>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/in/kowshik-boggavarapu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
-                >
-                  <FaLinkedin className="text-xl" />
-                </a>
-                <a
-                  href="https://github.com/kowshikboggavarapu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
-                >
-                  <FaGithub className="text-xl" />
-                </a>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 group-hover:border-purple-500/30 rounded-2xl p-8 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
+                <h4 className="text-lg font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">Connect With Me</h4>
+                <div className="flex gap-4">
+                  <motion.a
+                    href="https://www.linkedin.com/in/kowshik-boggavarapu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -3, boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)" }}
+                    className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center text-white transition-all duration-300 shadow-lg"
+                  >
+                    <FaLinkedin className="text-xl" />
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/kowshikboggavarapu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2, y: -3, boxShadow: "0 0 20px rgba(139, 92, 246, 0.6)" }}
+                    className="w-12 h-12 bg-gradient-to-br from-purple-600 to-gray-900 rounded-xl flex items-center justify-center text-white transition-all duration-300 shadow-lg"
+                  >
+                    <FaGithub className="text-xl" />
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
 
@@ -198,15 +266,23 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1 }}
-              className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-2xl p-6"
+              whileHover={{ y: -3 }}
+              className="group relative"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <h4 className="text-lg font-bold text-white">Available for Work</h4>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative bg-gradient-to-br from-green-600/20 to-emerald-600/20 backdrop-blur-xl border border-green-500/30 group-hover:border-green-500/50 rounded-2xl p-6 transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                <div className="flex items-center gap-3 mb-2">
+                  <motion.div 
+                    className="w-3 h-3 bg-green-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  ></motion.div>
+                  <h4 className="text-lg font-bold text-white">Available for Work</h4>
+                </div>
+                <p className="text-gray-300 text-sm">
+                  Open to freelance projects and full-time opportunities
+                </p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Open to freelance projects and full-time opportunities
-              </p>
             </motion.div>
           </motion.div>
         </div>

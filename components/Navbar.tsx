@@ -41,7 +41,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Timeline', href: '#timeline' },
+    { name: 'Achievements', href: '#achievements' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -59,8 +59,8 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/" className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent">
-              Portfolio
+            <Link href="/" className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 bg-clip-text text-transparent hover:text-transparent hover:bg-gradient-to-r hover:from-purple-400 hover:via-pink-400 hover:to-purple-500 transition-all duration-300">
+              Kowshik.dev
             </Link>
           </motion.div>
 
@@ -73,21 +73,21 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ scale: 1.1, color: '#667eea' }}
-                whileTap={{ scale: 0.95 }}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 font-semibold relative group"
+                whileHover={{ y: -2 }}
+                className="text-gray-300 hover:text-primary-400 transition-all duration-300 font-semibold relative group text-sm md:text-base"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 via-purple-500 to-primary-500 group-hover:w-full transition-all duration-300 shadow-lg shadow-primary-500/50"></span>
               </motion.a>
             ))}
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.08, boxShadow: "0 0 30px rgba(139, 92, 246, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-purple-500/30"
+              className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg relative overflow-hidden group"
             >
-              Hire Me
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-700"></span>
+              <span className="relative">Hire Me</span>
             </motion.a>
           </div>
 
