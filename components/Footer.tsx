@@ -30,7 +30,8 @@ const Footer = () => {
               Kowshik.dev
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Full-Stack Developer specializing in web development, blockchain, and modern technologies. Building innovative solutions one project at a time.
+              Frontend Developer & Full Stack Enthusiast. Specialized in React.js, Next.js, and modern web development. 
+              Passionate about creating high-performance, user-centric applications with clean code and best practices.
             </p>
             <div className="flex gap-4">
               <motion.a
@@ -132,14 +133,14 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="pt-8 text-center"
         >
-          <p className="text-gray-400 mb-2">
+          <p className="text-gray-400 mb-2 font-medium">
             © {currentYear} Kowshik Boggavarapu. All rights reserved.
           </p>
-          <p className="text-gray-500 text-sm flex items-center justify-center gap-1">
-            Built with Next.js, TypeScript, and Tailwind CSS <FaHeart className="text-red-500 animate-pulse" />
+          <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
+            Crafted with <FaHeart className="text-red-500 animate-pulse text-xs" /> using Next.js, TypeScript, React & Tailwind CSS
           </p>
           <p className="text-gray-600 text-xs mt-4">
-            Designed & developed with <span className="text-purple-400">passion</span> for creating amazing web experiences
+            Frontend Developer | React.js | Next.js | Full Stack Development
           </p>
         </motion.div>
       </div>

@@ -143,22 +143,22 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-4">
             <HiSparkles className="text-primary-400" />
-            <span className="text-primary-400 text-sm font-semibold">Featured Work</span>
+            <span className="text-primary-400 text-sm font-semibold">🚀 Featured Projects</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            My <span className="gradient-text">Portfolio</span>
+            Recent Work & <span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">Achievements</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Innovative solutions across web development, IoT, AI, and enterprise platforms
+            A curated selection of projects showcasing expertise in web development, IoT systems, and modern full-stack solutions. Each project demonstrates problem-solving, technical depth, and impact-driven development.
           </p>
         </motion.div>
 
         {/* Projects Grid with Timeline-style cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -169,10 +169,9 @@ const Projects = () => {
               className="group relative"
             >
               {/* Glassmorphism Card */}
-              <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 rounded-2xl p-6 md:p-8 hover:border-primary-500/50 transition-all duration-500 shadow-2xl hover:shadow-3xl overflow-hidden">
+              <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 rounded-2xl p-4 md:p-8 hover:border-primary-500/50 transition-all duration-500 shadow-2xl hover:shadow-3xl overflow-hidden">
                 {/* Animated Glow Effect */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${project.gradientColor} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500`}></div>
-                
                 {/* Corner Decoration */}
                 <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${project.gradientColor} opacity-5 rounded-bl-full`}></div>
                 

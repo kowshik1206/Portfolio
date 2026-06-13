@@ -81,17 +81,17 @@ const Contact = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-4">
             <FaEnvelope className="text-blue-400" />
-            <span className="text-blue-400 text-sm font-semibold">Get In Touch</span>
+            <span className="text-blue-400 text-sm font-semibold">Let's Collaborate</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Connect</span>
+            Let's Build Something <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Amazing</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            Have an exciting project or opportunity? I'm always open to discussing new ideas, collaborations, and how I can contribute to your success.
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -101,7 +101,7 @@ const Contact = () => {
             className="group relative"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 group-hover:border-blue-500/30 rounded-3xl p-8 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
+            <div className="relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 group-hover:border-blue-500/30 rounded-3xl p-6 md:p-8 transition-all duration-300 shadow-xl group-hover:shadow-2xl">
               <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <motion.div
@@ -277,10 +277,10 @@ const Contact = () => {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   ></motion.div>
-                  <h4 className="text-lg font-bold text-white">Available for Work</h4>
+                  <h4 className="text-lg font-bold text-white">Available for Opportunities</h4>
                 </div>
                 <p className="text-gray-300 text-sm">
-                  Open to freelance projects and full-time opportunities
+                  Actively seeking full-time roles, freelance projects, and partnerships with forward-thinking teams
                 </p>
               </div>
             </motion.div>

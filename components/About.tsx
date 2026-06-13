@@ -78,13 +78,18 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-4">
+            <span className="text-primary-400 text-sm font-semibold">👤 About Me</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            About <span className="gradient-text">Me</span>
+            Frontend Developer &amp;<br />
+            <span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">Full Stack Enthusiast</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Passionate full-stack developer with expertise in modern web technologies, IoT systems, and blockchain development
+            B.Tech Information Technology student with proven expertise in React.js, Next.js, and full-stack web development. 
+            Passionate about building high-performance, user-centric applications with clean code and modern technologies.
           </p>
         </motion.div>
 
@@ -267,10 +272,10 @@ const About = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
         >
           {[
-            { value: '5+', label: 'Projects Completed', color: 'from-blue-500 to-cyan-500' },
-            { value: '5+', label: 'Hackathons Participated', color: 'from-purple-500 to-pink-500' },
+            { value: '2+', label: 'Projects Completed', color: 'from-blue-500 to-cyan-500' },
+            { value: '2+', label: 'Hackathons Participated', color: 'from-purple-500 to-pink-500' },
             { value: '8+', label: 'Technologies Explored', color: 'from-green-500 to-emerald-500' },
-            { value: '3+', label: 'Years Experience', color: 'from-orange-500 to-red-500' },
+            { value: '2+', label: 'Years Experience', color: 'from-orange-500 to-red-500' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

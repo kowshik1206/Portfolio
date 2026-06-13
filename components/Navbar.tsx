@@ -84,10 +84,10 @@ const Navbar = () => {
               href="#contact"
               whileHover={{ scale: 1.08, boxShadow: "0 0 30px rgba(139, 92, 246, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg relative overflow-hidden group"
+              className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-700"></span>
-              <span className="relative">Hire Me</span>
+              <span className="relative">Get In Touch</span>
             </motion.a>
           </div>
 
@@ -135,9 +135,9 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4 block w-full text-center rounded-xl px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold shadow-lg shadow-purple-500/30"
+                className="mt-4 block w-full text-center rounded-xl px-4 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white font-semibold shadow-lg shadow-purple-500/30"
               >
-                Hire Me
+                Get In Touch
               </a>
             </motion.div>
           </>
