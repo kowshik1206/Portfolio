@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { BriefcaseBusiness, GraduationCap, Target, Trophy, UserRound } from 'lucide-react';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -81,7 +82,8 @@ const About = () => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-4">
-            <span className="text-primary-400 text-sm font-semibold">👤 About Me</span>
+            <UserRound className="h-4 w-4 text-primary-400" />
+            <span className="text-primary-400 text-sm font-semibold">About Me</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Frontend Developer &amp;<br />
@@ -108,7 +110,7 @@ const About = () => {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-4xl">📚</span>
+                <GraduationCap className="h-10 w-10 text-blue-400" />
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Education</h3>
               </div>
               <div className="space-y-6">
@@ -143,7 +145,7 @@ const About = () => {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-4xl">🏆</span>
+                <Trophy className="h-10 w-10 text-purple-400" />
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Hackathon Experience</h3>
               </div>
               <div className="space-y-5 max-h-[380px] overflow-y-auto pr-2 custom-scrollbar">
@@ -180,7 +182,7 @@ const About = () => {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-4xl">🎯</span>
+                <Target className="h-10 w-10 text-green-400" />
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Core Strengths</h3>
               </div>
               <div className="space-y-5">
@@ -222,7 +224,7 @@ const About = () => {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-4xl">👨‍💼</span>
+                <BriefcaseBusiness className="h-10 w-10 text-orange-400" />
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Leadership & Contact</h3>
               </div>
               <div className="space-y-6">
@@ -275,7 +277,7 @@ const About = () => {
             { value: '2+', label: 'Projects Completed', color: 'from-blue-500 to-cyan-500' },
             { value: '2+', label: 'Hackathons Participated', color: 'from-purple-500 to-pink-500' },
             { value: '8+', label: 'Technologies Explored', color: 'from-green-500 to-emerald-500' },
-            { value: '2+', label: 'Years Experience', color: 'from-orange-500 to-red-500' },
+              { value: '2+', label: 'Years Learning', color: 'from-orange-500 to-red-500' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

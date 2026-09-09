@@ -6,21 +6,30 @@ import { useEffect, useState } from 'react';
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const bootSteps = [
+    'Initializing UI shell',
+    'Loading components',
+    'Hydrating content',
+    'Launching portfolio',
+  ];
 
   useEffect(() => {
-    // Simulate loading progress
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 500);
-          return 100;
-        }
-        return prev + 10;
+        if (prev >= 100) return 100;
+        return Math.min(prev + 5, 100);
       });
-    }, 200);
+    }, 18);
 
-    return () => clearInterval(interval);
+    const finish = window.setTimeout(() => {
+      setProgress(100);
+      window.setTimeout(() => setIsLoading(false), 220);
+    }, 520);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(finish);
+    };
   }, []);
 
   return (
@@ -30,7 +39,17 @@ const LoadingScreen = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950 cursor-pointer"
+          onClick={() => setIsLoading(false)}
+          role="button"
+          aria-label="Skip loading screen"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              setIsLoading(false);
+            }
+          }}
         >
           {/* Animated Background Orbs */}
           <div className="absolute inset-0 overflow-hidden">
@@ -61,7 +80,7 @@ const LoadingScreen = () => {
           </div>
 
           {/* Loading Content */}
-          <div className="relative z-10 flex flex-col items-center gap-8">
+          <div className="relative z-10 flex w-full max-w-xl flex-col items-center gap-6 px-6">
             {/* Animated Logo/Initial */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -72,7 +91,7 @@ const LoadingScreen = () => {
                 damping: 20,
                 duration: 1,
               }}
-              className="relative"
+              className="relative mb-2"
             >
               {/* Outer rotating ring */}
               <motion.div
@@ -82,7 +101,7 @@ const LoadingScreen = () => {
                   repeat: Infinity,
                   ease: "linear",
                 }}
-                className="absolute inset-0 w-32 h-32 rounded-full border-4 border-transparent border-t-primary-500 border-r-purple-500"
+                className="absolute inset-0 h-28 w-28 rounded-full border-4 border-transparent border-t-primary-500 border-r-purple-500"
               />
               
               {/* Inner pulsing circle */}
@@ -96,9 +115,9 @@ const LoadingScreen = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-32 h-32 rounded-full bg-gradient-to-br from-primary-500/20 to-purple-500/20 backdrop-blur-sm flex items-center justify-center border border-primary-500/30"
+                className="flex h-28 w-28 items-center justify-center rounded-full border border-primary-500/30 bg-gradient-to-br from-primary-500/20 to-purple-500/20 backdrop-blur-sm"
               >
-                <span className="text-5xl font-bold gradient-text">K</span>
+                <span className="text-4xl font-bold gradient-text">K</span>
               </motion.div>
             </motion.div>
 
@@ -106,11 +125,14 @@ const LoadingScreen = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.1, duration: 0.25 }}
               className="text-center"
             >
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary-400">
+                Web Developer Boot Sequence
+              </p>
               <h2 className="text-2xl font-bold text-white mb-2">
-                Loading Portfolio
+                Preparing your experience
               </h2>
               <motion.p
                 animate={{
@@ -123,15 +145,30 @@ const LoadingScreen = () => {
                 }}
                 className="text-gray-400"
               >
-                Please wait...
+                Compiling components and launching the page
               </motion.p>
             </motion.div>
+
+            {/* Boot log */}
+            <div className="w-full rounded-2xl border border-dark-700/70 bg-dark-950/60 p-4 font-mono text-xs sm:text-sm text-left text-gray-300 shadow-2xl shadow-black/20 backdrop-blur-md">
+              {bootSteps.map((step, index) => {
+                const active = progress >= (index + 1) * 25;
+                return (
+                  <div key={step} className="flex items-center gap-3 py-1.5">
+                    <span className={active ? 'text-green-400' : 'text-gray-500'}>
+                      {active ? '>' : '·'}
+                    </span>
+                    <span className={active ? 'text-gray-100' : 'text-gray-500'}>{step}</span>
+                  </div>
+                );
+              })}
+            </div>
 
             {/* Progress Bar */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
+              transition={{ delay: 0.15, duration: 0.35 }}
               className="w-64 md:w-80"
             >
               {/* Progress container */}
@@ -162,12 +199,16 @@ const LoadingScreen = () => {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-                className="text-center text-primary-400 text-sm font-semibold mt-3"
+                transition={{ delay: 0.15 }}
+                className="text-center text-primary-400 text-sm font-semibold mt-3 tabular-nums"
               >
-                {progress}%
+                {String(progress).padStart(3, '0')}%
               </motion.p>
             </motion.div>
+
+            <p className="text-xs text-gray-500 text-center">
+              Tap, press Enter, or Space to skip
+            </p>
 
             {/* Floating particles */}
             {[...Array(6)].map((_, i) => (
@@ -192,12 +233,12 @@ const LoadingScreen = () => {
                   opacity: [0, 0.6, 0],
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
+                  duration: 1.5 + Math.random(),
                   repeat: Infinity,
                   ease: "easeInOut",
                   delay: i * 0.3,
                 }}
-                className="absolute w-2 h-2 bg-gradient-to-r from-primary-400 to-purple-400 rounded-full blur-sm"
+                className="absolute h-2 w-2 rounded-full bg-gradient-to-r from-primary-400 to-purple-400 blur-sm"
                 style={{
                   top: `${50 + Math.random() * 20 - 10}%`,
                   left: `${50 + Math.random() * 20 - 10}%`,

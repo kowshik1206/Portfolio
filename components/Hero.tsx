@@ -6,7 +6,10 @@ import { SiReact, SiPhp, SiHtml5, SiGit, SiNodedotjs, SiMongodb, SiCss3, SiJavas
 import { VscCode } from 'react-icons/vsc';
 import { HiCube } from 'react-icons/hi';
 import { IoHardwareChip } from 'react-icons/io5';
+import { FileText, HandHelping, Rocket } from 'lucide-react';
 import Image from 'next/image';
+
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? '';
 
 const Hero = () => {
   const containerVariants = {
@@ -83,7 +86,10 @@ const Hero = () => {
                 >
                   <div className="px-4 py-2 bg-primary-500/15 border border-primary-500/40 rounded-full backdrop-blur-sm">
                     <p className="text-primary-300 text-xs md:text-sm font-semibold tracking-[0.15em] uppercase">
-                      👋 Welcome to my portfolio
+                      <span className="inline-flex items-center gap-2">
+                        <HandHelping className="h-4 w-4" />
+                        Welcome to my portfolio
+                      </span>
                     </p>
                   </div>
                 </motion.div>
@@ -200,18 +206,22 @@ const Hero = () => {
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-700"></span>
                     <span className="relative flex items-center gap-2">
-                      🚀 View My Projects
+                      <Rocket className="h-4 w-4" />
+                      View My Projects
                     </span>
                   </motion.a>
                   <motion.a
-                    href="/KOWSHIK_RESUME.pdf"
+                    href={`${siteBasePath}/KOWSHIK_RESUME.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-5 py-2.5 bg-dark-800/80 backdrop-blur-md border-2 border-primary-500/40 hover:border-primary-500/70 text-gray-300 hover:text-white rounded-lg font-semibold transition-all duration-300 text-xs md:text-sm"
                   >
-                    📄 Download Resume
+                    <span className="inline-flex items-center gap-2">
+                      <FileText className="h-4 w-4" />
+                      Download Resume
+                    </span>
                   </motion.a>
                 </motion.div>
 
@@ -250,200 +260,126 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative flex items-center justify-center hidden md:flex"
+                className="relative flex items-center justify-center"
               >
-                <div className="relative w-full max-w-xs h-64 sm:h-80 md:h-96 flex items-center justify-center">
-              {/* Animated Glow Ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute z-5 w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 bg-clip-border"
-              />
-              
-              {/* Secondary Glow Ring */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute z-4 w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[440px] md:h-[440px] rounded-full border-[1px] border-primary-500/30 opacity-50"
-              />
-
-              {/* White Circle Background with Neon Glow - Static */}
-              <div
-                className="absolute z-10 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] bg-gradient-to-br from-white to-gray-50 rounded-full shadow-2xl flex items-center justify-center overflow-hidden"
-                style={{
-                  boxShadow: '0 0 60px rgba(139, 92, 246, 0.5), 0 0 120px rgba(59, 130, 246, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1)',
-                }}
-              >
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <Image
-                    src="/developer-avatar.png"
-                    alt="Kowshik - Frontend Developer"
-                    fill
-                    sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 400px"
-                    className="w-full h-full object-cover scale-110"
-                    priority
+                <div className="relative mx-auto flex h-56 w-full max-w-[18rem] items-center justify-center sm:h-72 sm:max-w-[22rem] md:h-96 md:max-w-xs">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    className="absolute z-5 h-[180px] w-[180px] rounded-full border-2 border-transparent bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 bg-clip-border sm:h-[240px] sm:w-[240px] md:h-[420px] md:w-[420px]"
                   />
+
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    className="absolute z-4 h-[200px] w-[200px] rounded-full border-[1px] border-primary-500/30 opacity-50 sm:h-[260px] sm:w-[260px] md:h-[440px] md:w-[440px]"
+                  />
+
+                  <div
+                    className="absolute z-10 flex h-[170px] w-[170px] items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-white to-gray-50 shadow-2xl sm:h-[230px] sm:w-[230px] md:h-[400px] md:w-[400px]"
+                    style={{
+                      boxShadow: '0 0 60px rgba(139, 92, 246, 0.5), 0 0 120px rgba(59, 130, 246, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={`${siteBasePath}/developer-avatar.png`}
+                        alt="Kowshik - Frontend Developer"
+                        fill
+                        sizes="(max-width: 640px) 170px, (max-width: 768px) 230px, 400px"
+                        className="object-cover scale-110"
+                        priority
+                      />
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+                      transition={{ opacity: { delay: 0.5, duration: 0.6 }, scale: { delay: 0.5, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 0.5, duration: 2.5, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      className="absolute top-[-70px] left-1/2 z-20 flex -translate-x-1/2 cursor-pointer items-center gap-2 rounded-full bg-[#61DAFB] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiReact className="text-base" /> React
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -12, 0] }}
+                      transition={{ opacity: { delay: 0.6, duration: 0.6 }, scale: { delay: 0.6, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 0.8, duration: 3, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      className="absolute top-[-40px] right-[-65px] z-20 flex cursor-pointer items-center gap-2 rounded-full bg-[#777BB4] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiPhp className="text-base" /> PHP
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+                      transition={{ opacity: { delay: 0.7, duration: 0.6 }, scale: { delay: 0.7, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 1, duration: 2.8, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute right-[-85px] top-1/2 z-20 flex -translate-y-1/2 cursor-pointer items-center gap-2 rounded-full bg-[#339933] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiNodedotjs className="text-base" /> Node
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+                      transition={{ opacity: { delay: 0.75, duration: 0.6 }, scale: { delay: 0.75, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 0.9, duration: 3.1, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute bottom-[-40px] right-[-65px] z-20 flex cursor-pointer items-center gap-2 rounded-full bg-[#47A248] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiMongodb className="text-base" /> Mongo
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -11, 0] }}
+                      transition={{ opacity: { delay: 0.8, duration: 0.6 }, scale: { delay: 0.8, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 1.1, duration: 2.7, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute bottom-[-70px] left-1/2 z-20 flex -translate-x-1/2 cursor-pointer items-center gap-2 rounded-full bg-[#F7DF1E] px-4 py-2 text-xs font-bold text-black shadow-lg"
+                    >
+                      <SiJavascript className="text-base" /> JavaScript
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -9, 0] }}
+                      transition={{ opacity: { delay: 0.9, duration: 0.6 }, scale: { delay: 0.9, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 1.3, duration: 3.3, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute bottom-[-40px] left-[-65px] z-20 flex cursor-pointer items-center gap-2 rounded-full bg-[#7952B3] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiBootstrap className="text-base" /> Bootstrap
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+                      transition={{ opacity: { delay: 1, duration: 0.6 }, scale: { delay: 1, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 1.5, duration: 2.8, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute left-[-85px] top-1/2 z-20 flex -translate-y-1/2 cursor-pointer items-center gap-2 rounded-full bg-[#E34F26] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiHtml5 className="text-base" /> HTML
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1, y: [0, -12, 0] }}
+                      transition={{ opacity: { delay: 1.1, duration: 0.6 }, scale: { delay: 1.1, duration: 0.6, type: 'spring', bounce: 0.4 }, y: { delay: 1.7, duration: 3, repeat: Infinity, ease: 'easeInOut' } }}
+                      whileHover={{ scale: 1.1 }}
+                      className="absolute top-[-40px] left-[-65px] z-20 flex cursor-pointer items-center gap-2 rounded-full bg-[#F05032] px-4 py-2 text-xs font-semibold text-white shadow-lg"
+                    >
+                      <SiGit className="text-base" /> Git
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Floating Tech Badges - Arranged in a circular pattern around avatar */}
-              {/* React - Top (12 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -10, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.5, duration: 0.6 },
-                  scale: { delay: 0.5, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 0.5, duration: 2.5, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1, y: -3 }}
-                className="absolute top-[-50px] md:top-[-70px] left-1/2 -translate-x-1/2 px-3 py-2 md:px-4 md:py-2 bg-[#61DAFB] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiReact className="text-sm md:text-base" /> React
               </motion.div>
-
-              {/* PHP - Top Right (2 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -12, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.6, duration: 0.6 },
-                  scale: { delay: 0.6, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 0.8, duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1, y: -3 }}
-                className="absolute top-[-25px] md:top-[-40px] right-[-45px] md:right-[-65px] px-3 py-2 md:px-4 md:py-2 bg-[#777BB4] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiPhp className="text-sm md:text-base" /> PHP
-              </motion.div>
-
-              {/* Node.js - Right (3 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -8, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.7, duration: 0.6 },
-                  scale: { delay: 0.7, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 1, duration: 2.8, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute right-[-60px] md:right-[-85px] top-1/2 -translate-y-1/2 px-3 py-2 md:px-4 md:py-2 bg-[#339933] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiNodedotjs className="text-sm md:text-base" /> Node
-              </motion.div>
-
-              {/* MongoDB - Bottom Right (4 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -8, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.75, duration: 0.6 },
-                  scale: { delay: 0.75, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 0.9, duration: 3.1, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute bottom-[-25px] md:bottom-[-40px] right-[-45px] md:right-[-65px] px-3 py-2 md:px-4 md:py-2 bg-[#47A248] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiMongodb className="text-sm md:text-base" /> Mongo
-              </motion.div>
-
-              {/* JavaScript - Bottom (6 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -11, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.8, duration: 0.6 },
-                  scale: { delay: 0.8, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 1.1, duration: 2.7, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute bottom-[-50px] md:bottom-[-70px] left-1/2 -translate-x-1/2 px-3 py-2 md:px-4 md:py-2 bg-[#F7DF1E] text-black rounded-full font-bold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiJavascript className="text-sm md:text-base" /> JavaScript
-              </motion.div>
-
-              {/* Bootstrap - Bottom Left (8 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -9, 0]
-                }}
-                transition={{
-                  opacity: { delay: 0.9, duration: 0.6 },
-                  scale: { delay: 0.9, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 1.3, duration: 3.3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute bottom-[-25px] md:bottom-[-40px] left-[-45px] md:left-[-65px] px-3 py-2 md:px-4 md:py-2 bg-[#7952B3] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiBootstrap className="text-sm md:text-base" /> Bootstrap
-              </motion.div>
-
-              {/* HTML - Left (9 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -10, 0]
-                }}
-                transition={{
-                  opacity: { delay: 1.0, duration: 0.6 },
-                  scale: { delay: 1.0, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 1.5, duration: 2.8, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute left-[-60px] md:left-[-85px] top-1/2 -translate-y-1/2 px-3 py-2 md:px-4 md:py-2 bg-[#E34F26] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiHtml5 className="text-sm md:text-base" /> HTML
-              </motion.div>
-
-              {/* Git - Top Left (10 o'clock) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -12, 0]
-                }}
-                transition={{
-                  opacity: { delay: 1.1, duration: 0.6 },
-                  scale: { delay: 1.1, duration: 0.6, type: "spring", bounce: 0.4 },
-                  y: { delay: 1.7, duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.1 }}
-                className="absolute top-[-25px] md:top-[-40px] left-[-45px] md:left-[-65px] px-3 py-2 md:px-4 md:py-2 bg-[#F05032] text-white rounded-full font-semibold shadow-lg flex items-center gap-2 text-xs cursor-pointer z-20"
-              >
-                <SiGit className="text-sm md:text-base" /> Git
-              </motion.div>
-            </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };

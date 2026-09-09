@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaTrophy, FaMedal, FaAward } from 'react-icons/fa';
+import { Award, Medal, Sparkles, Trophy } from 'lucide-react';
 
 const Achievements = () => {
   const [ref, inView] = useInView({
@@ -15,7 +16,7 @@ const Achievements = () => {
       title: 'KBN CodeSpark Hackathon 2025',
       description: '🥇 1st Prize: Engineered real-time GPS tracking system with 3m precision and 15km LoRa communication built in 24 hours',
       type: 'Winner',
-      icon: '⭐',
+      icon: Sparkles,
       color: 'from-green-500 to-emerald-500',
       bgGlow: 'shadow-green-500/20',
       date: '2025',
@@ -24,7 +25,7 @@ const Achievements = () => {
       title: 'Aptos Hackathon Vijayawada',
       description: 'Developed blockchain solutions demonstrating proficiency in Web3 technologies and smart contract architecture',
       type: 'Participant',
-      icon: '🏆',
+      icon: Trophy,
       color: 'from-yellow-500 to-orange-500',
       bgGlow: 'shadow-yellow-500/20',
       date: '2024',
@@ -33,7 +34,7 @@ const Achievements = () => {
       title: 'Aptos Hackathon Bangalore',
       description: 'Showcased advanced blockchain development skills and collaborated with top developers from across India',
       type: 'Participant',
-      icon: '🥇',
+      icon: Medal,
       color: 'from-purple-500 to-pink-500',
       bgGlow: 'shadow-purple-500/20',
       date: '2024',
@@ -42,7 +43,7 @@ const Achievements = () => {
       title: 'Algorand Hackathon',
       description: 'Gained hands-on experience with Algorand blockchain and developed Web3 solutions for decentralized applications',
       type: 'Participant',
-      icon: '🎖️',
+      icon: Award,
       color: 'from-blue-500 to-cyan-500',
       bgGlow: 'shadow-blue-500/20',
       date: '2024',
@@ -90,7 +91,7 @@ const Achievements = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-4">
             <FaTrophy className="text-purple-400" />
-            <span className="text-purple-400 text-sm font-semibold">🏆 Hackathons & Achievements</span>
+            <span className="text-purple-400 text-sm font-semibold">Hackathons & Achievements</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Competitive <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Achievements</span>
@@ -131,7 +132,7 @@ const Achievements = () => {
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
                     >
-                      {achievement.icon}
+                      <achievement.icon className="h-8 w-8 text-white" />
                     </motion.div>
                     <motion.span
                       initial={{ opacity: 0, scale: 0 }}

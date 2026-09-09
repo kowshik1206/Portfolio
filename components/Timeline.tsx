@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCode, FaLaptopCode, FaServer, FaRocket, FaAward, FaCalendar } from 'react-icons/fa';
 import { HiSparkles, HiLightningBolt } from 'react-icons/hi';
+import { CalendarDays, Rocket, Trophy, Users } from 'lucide-react';
 
 const Timeline = () => {
   const [ref, inView] = useInView({
@@ -13,6 +14,17 @@ const Timeline = () => {
 
   const timelineData = [
     {
+      year: '2026',
+      type: 'FINAL YEAR PROJECT',
+      title: 'RouteIQ Travel Planner',
+      description: 'Built an intelligent multi-mode travel planner and cost analyzer that compares car, train, flight, and bus routes, highlights POIs, and helps users make smarter journey decisions.',
+      technologies: ['React', 'Vite', 'Tailwind CSS', 'Leaflet', 'PHP', 'MySQL'],
+      icon: FaRocket,
+      color: 'from-teal-500 to-cyan-500',
+      bgGlow: 'shadow-teal-500/20',
+      achievement: 'Final Year Project',
+    },
+    {
       year: '2025',
       type: 'IOT PROJECT',
       title: 'IoT GPS Tracking System',
@@ -21,7 +33,7 @@ const Timeline = () => {
       icon: FaRocket,
       color: 'from-cyan-500 to-blue-500',
       bgGlow: 'shadow-cyan-500/20',
-      achievement: '🥇 1st Prize Winner',
+      achievement: '1st Prize Winner',
     },
     {
       year: '2024',
@@ -76,7 +88,7 @@ const Timeline = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-4">
             <HiSparkles className="text-primary-400" />
-            <span className="text-primary-400 text-sm font-semibold">⏱️ My Journey</span>
+            <span className="text-primary-400 text-sm font-semibold">My Journey</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Professional <span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">Timeline</span>
@@ -250,12 +262,12 @@ const Timeline = () => {
             <p className="text-gray-400">Numbers that tell my story</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto">
             {[
-              { value: '5+', label: 'Production Projects', icon: '🚀', color: 'from-blue-500 to-cyan-500' },
-              { value: '3+', label: 'Years of Development', icon: '📅', color: 'from-green-500 to-emerald-500' },
-              { value: '20+', label: 'Technologies', icon: '⚡', color: 'from-orange-500 to-red-500' },
-              { value: '500K+', label: 'Active Users Served', icon: '👥', color: 'from-purple-500 to-pink-500' },
+              { value: '5+', label: 'Production Projects', icon: Rocket, color: 'from-blue-500 to-cyan-500' },
+              { value: '3+', label: 'Years of Development', icon: CalendarDays, color: 'from-green-500 to-emerald-500' },
+              { value: '20+', label: 'Technologies', icon: Trophy, color: 'from-orange-500 to-red-500' },
+              { value: '500K+', label: 'Active Users Served', icon: Users, color: 'from-purple-500 to-pink-500' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -268,13 +280,15 @@ const Timeline = () => {
                   stiffness: 200
                 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="group relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 rounded-2xl p-6 text-center hover:border-primary-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl cursor-default"
+                className="group relative bg-gradient-to-br from-dark-800/90 to-dark-900/90 backdrop-blur-xl border border-dark-700/50 rounded-2xl p-4 sm:p-6 text-center hover:border-primary-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl cursor-default h-full"
               >
                 {/* Glow effect */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500`}></div>
                 
                 <div className="relative z-10">
-                  <div className="text-4xl mb-2">{stat.icon}</div>
+                  <div className="flex justify-center mb-3">
+                    <stat.icon className="h-5 w-5 md:h-6 md:w-6 text-white/90" />
+                  </div>
                   <div className={`text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                     {stat.value}
                   </div>

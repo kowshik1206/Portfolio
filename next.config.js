@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const isGitHubPages = process.env.GITHUB_PAGES === 'true'
-const repositoryName = 'Portfolio'
 
 const nextConfig = {
   reactStrictMode: true,
@@ -11,8 +10,8 @@ const nextConfig = {
   },
   ...(isGitHubPages
     ? {
-        basePath: `/${repositoryName}`,
-        assetPrefix: `/${repositoryName}/`,
+        basePath: '/Portfolio',
+        assetPrefix: '/Portfolio',
       }
     : {}),
 }

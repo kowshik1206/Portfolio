@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaGithub, FaExternalLinkAlt, FaCalendar, FaUsers, FaAward, FaRocket } from 'react-icons/fa';
 import { HiSparkles, HiLightningBolt, HiCheckCircle } from 'react-icons/hi';
+import { CarFront, GraduationCap, HeartPulse, SatelliteDish } from 'lucide-react';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -12,6 +13,29 @@ const Projects = () => {
   });
 
   const projects = [
+    {
+      title: 'RouteIQ',
+      subtitle: 'Intelligent Multi-Mode Travel Planner & Cost Analyzer',
+      description: 'Final year project that compares car, train, flight, and bus routes, calculates trip costs, highlights POIs, and helps users plan smarter journeys with an interactive map experience.',
+      duration: 'Final Year Project',
+      teamSize: 'Solo / Academic Project',
+      category: 'Web App',
+      status: 'Featured',
+      statusColor: 'bg-blue-500',
+      categoryColor: 'bg-blue-500',
+      gradientColor: 'from-teal-500 to-cyan-500',
+      year: '2026',
+      icon: SatelliteDish,
+      achievement: 'Route optimization + cost analysis',
+      keyResults: [
+        'Multi-mode travel comparison',
+        'Interactive route and POI discovery',
+        'Cost analysis across travel options',
+      ],
+      technologies: ['React', 'Vite', 'Tailwind CSS', 'Leaflet', 'PHP', 'MySQL'],
+      github: 'https://github.com/kowshik1206/Final-Project',
+      liveDemo: '#',
+    },
     {
       title: 'Cattle Tracking System',
       subtitle: 'IoT Livestock Monitoring Solution',
@@ -24,7 +48,7 @@ const Projects = () => {
       categoryColor: 'bg-pink-500',
       gradientColor: 'from-cyan-500 to-blue-500',
       year: '2025',
-      icon: '📡',
+      icon: SatelliteDish,
       achievement: 'Built in 24 hours',
       keyResults: [
         '3-meter GPS precision',
@@ -32,7 +56,7 @@ const Projects = () => {
         '6-month battery life',
       ],
       technologies: ['ESP32', 'LoRa', 'GNSS', 'PHP', 'MySQL', 'JavaScript'],
-      github: '#',
+      github: 'https://github.com/your-username/cattle-tracking-system', // TODO: replace with real repo URL
       liveDemo: 'https://careerinedu.com/tracker/map.html',
     },
     {
@@ -47,7 +71,7 @@ const Projects = () => {
       categoryColor: 'bg-green-500',
       gradientColor: 'from-green-500 to-emerald-500',
       year: '2024',
-      icon: '🏥',
+      icon: HeartPulse,
       achievement: 'First page Google ranking',
       keyResults: [
         '90+ PageSpeed score',
@@ -55,7 +79,7 @@ const Projects = () => {
         '100% cross-browser support',
       ],
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'SEO', 'Analytics'],
-      github: '#',
+      github: 'https://github.com/your-username/muskan-medicare', // TODO: replace with real repo URL
       liveDemo: 'http://muskanmedicare.com/',
     },
     {
@@ -70,7 +94,7 @@ const Projects = () => {
       categoryColor: 'bg-green-500',
       gradientColor: 'from-blue-500 to-purple-500',
       year: '2024',
-      icon: '💊',
+      icon: HeartPulse,
       achievement: '92 PageSpeed score',
       keyResults: [
         '90+ PageSpeed score',
@@ -78,7 +102,7 @@ const Projects = () => {
         '100% cross-browser support',
       ],
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'SEO', 'Analytics'],
-      github: '#',
+      github: 'https://github.com/your-username/drwinz-pharma', // TODO: replace with real repo URL
       liveDemo: 'http://drwinzpharma.com/',
     },
     {
@@ -93,7 +117,7 @@ const Projects = () => {
       categoryColor: 'bg-pink-500',
       gradientColor: 'from-orange-500 to-red-500',
       year: '2024',
-      icon: '🚗',
+      icon: CarFront,
       achievement: '200+ bookings',
       keyResults: [
         'Seamless booking experience',
@@ -101,7 +125,7 @@ const Projects = () => {
         'Comprehensive review system',
       ],
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-      github: '#',
+      github: 'https://github.com/your-username/riyocar', // TODO: replace with real repo URL
       liveDemo: 'http://riyocar.com/',
     },
     {
@@ -116,7 +140,7 @@ const Projects = () => {
       categoryColor: 'bg-purple-500',
       gradientColor: 'from-purple-500 to-pink-500',
       year: '2023',
-      icon: '🎓',
+      icon: GraduationCap,
       achievement: '500+ active users',
       keyResults: [
         '95% job match accuracy',
@@ -124,7 +148,7 @@ const Projects = () => {
         'Real-time notifications',
       ],
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL', 'Bootstrap'],
-      github: '#',
+      github: 'https://github.com/your-username/careeredu', // TODO: replace with real repo URL
       liveDemo: 'http://careerinedu.com/',
     },
   ];
@@ -147,7 +171,7 @@ const Projects = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-4">
             <HiSparkles className="text-primary-400" />
-            <span className="text-primary-400 text-sm font-semibold">🚀 Featured Projects</span>
+            <span className="text-primary-400 text-sm font-semibold">Featured Projects</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Recent Work & <span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">Achievements</span>
@@ -185,7 +209,7 @@ const Projects = () => {
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.6 }}
                       >
-                        {project.icon}
+                        <project.icon className="h-7 w-7 text-white" />
                       </motion.div>
                       <div>
                         <div className="flex items-center gap-2 mb-2">

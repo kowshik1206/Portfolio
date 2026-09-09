@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCertificate, FaGraduationCap } from 'react-icons/fa';
+import { Atom, Bot, FileCode2, Lock, Rocket, TrendingUp } from 'lucide-react';
 
 const Certifications = () => {
   const [ref, inView] = useInView({
@@ -15,7 +16,7 @@ const Certifications = () => {
       title: 'Google Android Internship',
       issuer: 'Google',
       category: 'Mobile Development',
-      icon: '🚀',
+      icon: Rocket,
       color: 'from-blue-500 to-cyan-500',
       date: '2024',
     },
@@ -23,7 +24,7 @@ const Certifications = () => {
       title: 'Google AI/ML Internship',
       issuer: 'Google',
       category: 'Artificial Intelligence',
-      icon: '🤖',
+      icon: Bot,
       color: 'from-purple-500 to-pink-500',
       date: '2024',
     },
@@ -31,7 +32,7 @@ const Certifications = () => {
       title: 'Palo Alto Cybersecurity Internship',
       issuer: 'Palo Alto Networks',
       category: 'Cybersecurity',
-      icon: '🔒',
+      icon: Lock,
       color: 'from-red-500 to-orange-500',
       date: '2024',
     },
@@ -39,7 +40,7 @@ const Certifications = () => {
       title: 'React Certificate',
       issuer: 'Online Platform',
       category: 'Frontend',
-      icon: '⚛️',
+      icon: Atom,
       color: 'from-cyan-500 to-blue-500',
       date: '2023',
     },
@@ -47,7 +48,7 @@ const Certifications = () => {
       title: 'PHP Certificate',
       issuer: 'Online Platform',
       category: 'Backend',
-      icon: '🐘',
+      icon: FileCode2,
       color: 'from-purple-500 to-blue-500',
       date: '2023',
     },
@@ -55,7 +56,7 @@ const Certifications = () => {
       title: 'SEO Certificate',
       issuer: 'Online Platform',
       category: 'Digital Marketing',
-      icon: '📈',
+      icon: TrendingUp,
       color: 'from-green-500 to-emerald-500',
       date: '2023',
     },
@@ -146,7 +147,7 @@ const Certifications = () => {
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    {cert.icon}
+                    <cert.icon className="h-7 w-7 text-white" />
                   </motion.div>
 
                   {/* Content */}
